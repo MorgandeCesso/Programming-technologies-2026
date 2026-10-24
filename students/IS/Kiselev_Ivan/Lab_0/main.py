@@ -1,28 +1,78 @@
+from pathlib import Path
+
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
-api_key = os.getenv("FIRST_API_KEY")
-api_key2 = os.getenv("SECOND_API_KEY")
-base_url = os.getenv("BASE_URL")
+base_url = os.getenv("BASE_URL") or "https://openrouter.ai/api/v1"
+system_prompt = os.getenv("SYSTEM_PROMPT") or ""
 
-client = OpenAI(
-    api_key=api_key,
-    base_url=base_url,
-)
+client = OpenAI(api_key=os.getenv("API_KEY"), base_url=base_url)
 
-def get_response(text: str, client: OpenAI):
-    response = client.responses.create(model="openrouter/free", input=text)
-    return response
+models = [
+    {
+        "name": "Nemotron",
+        "slug": "nvidia/nemotron-3.5-super-vl:free",
+        "temperature": 1.0,
+        "reasoning": {"effort": "none"},
+    },
+    {
+        "name": "Flint",
+        "slug": "recursive/flint-v1.0:free",
+    },
+]
+
+
+def get_response(text: str, model: dict, history: list) -> str:
+    dialog = (history + [{"role": "user", "content": text}])[-6:]
+    request = {
+        "model": model["slug"],
+        "input": dialog,
+    }
+    if "temperature" in model:
+        request["temperature"] = model["temperature"]
+    if "reasoning" in model:
+        request["reasoning"] = model["reasoning"]
+    if system_prompt:
+        request["instructions"] = system_prompt
+
+    response = client.responses.create(**request)
+    answer = response.output_text or ""
+    if not answer.strip(): 
+        return ""
+
+    history[:] = (dialog + [{"role": "assistant", "content": answer}])[-6:] # update history 
+    return answer
+
 
 if __name__ == "__main__":
-    print("Введите ваш вопрос (или 'exit' для выхода):")
+    current = 0
+    history = []
+    print("Введите ваш вопрос (switch - другая модель, exit - выход):")
+    print("Модель:", models[current]["name"])
+
     while True:
-        question = input("Вы: ")
+        question = input("Вы: ").strip()
+        if not question:
+            continue
         if question.lower() == "exit":
-            print("Завершение программы.")
+            print("Завершение программы")
             break
-        answer = get_response(question, client)
-        print("AI:", answer.output_text)
+        if question.lower() == "switch":
+            current = 1 - current
+            history.clear()
+            print("Модель:", models[current]["name"])
+            continue
+
+        try:
+            answer = get_response(question, models[current], history)
+        except Exception as exc:
+            print("Ошибка запроса:", exc)
+            continue
+
+        if not answer:
+            print("Модель вернула пустой ответ")
+            continue
+        print("Ответ:", answer)
