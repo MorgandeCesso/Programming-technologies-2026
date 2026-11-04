@@ -1,0 +1,44 @@
+# Модель запускается отдельно и с хоста доступна как localhost:7000.
+# Из контейнера api тот же сервер доступен как host.docker.internal:7000.
+#
+# Всё вместе:  docker compose up --build
+# Только БД:   docker compose up db
+# API в WSL:   uvicorn main:app --reload
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: lab
+      POSTGRES_PASSWORD: lab
+      POSTGRES_DB: vivarium
+    ports:
+      - "5432:5432"
+    volumes:
+      - vivarium_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab -d vivarium"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://lab:lab@db:5432/vivarium
+      BASE_URL: http://host.docker.internal:7000/v1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+volumes:
+  vivarium_pg:
