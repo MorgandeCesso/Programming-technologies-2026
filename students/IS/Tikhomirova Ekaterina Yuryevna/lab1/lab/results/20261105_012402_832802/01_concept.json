@@ -1,0 +1,26 @@
+{
+  "task_id": "01_concept",
+  "requested_model": "llama-3.2-1b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "объясни, что такое список в Python. ответь в двух предложениях и приведи один короткий пример.",
+  "temperature": 0.2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 10.344,
+  "response_model": "llama-3.2-1b-instruct",
+  "status": "completed",
+  "answer": "Список — это набор значений, которые можно использовать для хранения и доступа к информации. В Python это можно представить как словарь (dict), где ключами являются значения, а значениями — элементы. Следовательно, список можно выразить как:\n\n```python\nmy_list = [1, 2, 3, 'c', 4.5]\n```\n\nЭто позволяет нам easily добавлять, удалить или просматривать элементы в списке.",
+  "usage": {
+    "input_tokens": 102,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 25,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 104,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 206
+  },
+  "incomplete_details": null
+}

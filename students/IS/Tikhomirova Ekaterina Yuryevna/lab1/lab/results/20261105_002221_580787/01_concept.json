@@ -1,0 +1,26 @@
+{
+  "task_id": "01_concept",
+  "requested_model": "qwen2.5-1.5b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "объясни, что такое список в Python. ответь в двух предложениях и приведи один короткий пример.",
+  "temperature": 0.2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 7.528,
+  "response_model": "qwen2.5-1.5b-instruct",
+  "status": "completed",
+  "answer": "Список в Python - это изменяемый тип данных, который представляет собой последовательность элементов. Он позволяет хранить любой набор данных, включая строки, числа, другие списки и даже объекты.\n\nПример использования списка:\n\n```python\nmy_list = [1, 2, 3]\n```\n\nВ этом примере создается список с трёх элементами: целые числа 1, 2 и 3.",
+  "usage": {
+    "input_tokens": 85,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 98,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 183
+  },
+  "incomplete_details": null
+}

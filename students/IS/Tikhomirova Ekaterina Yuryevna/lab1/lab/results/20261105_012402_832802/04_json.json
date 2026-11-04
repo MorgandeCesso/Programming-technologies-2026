@@ -1,0 +1,26 @@
+{
+  "task_id": "04_json",
+  "requested_model": "llama-3.2-1b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "извлеки данные из текста. верни только JSON-объект с ключами name, age, city. значение age должно быть числом. не добавляй Markdown и пояснения.\n\nтекст: Анне 22 года. она живет в Казани.",
+  "temperature": 0.2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 2.327,
+  "response_model": "llama-3.2-1b-instruct",
+  "status": "completed",
+  "answer": "```\n{\n    \"name\": \"Анна\",\n    \"age\": 22,\n    \"city\": \"Казань\"\n}\n```",
+  "usage": {
+    "input_tokens": 136,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 72,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 29,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 165
+  },
+  "incomplete_details": null
+}

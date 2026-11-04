@@ -1,0 +1,26 @@
+{
+  "task_id": "05_missing_information",
+  "requested_model": "llama-3.2-1b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "ответь только по предоставленному тексту. если информации недостаточно, сообщи об этом.\n\nтекст: библиотека работает с понедельника по пятницу с 09:00 до 18:00. по субботам и воскресеньям она закрыта.\n\nвопрос: сколько стоит годовой абонемент в библиотеку?",
+  "temperature": 0.2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 2.248,
+  "response_model": "llama-3.2-1b-instruct",
+  "status": "completed",
+  "answer": "По предоставленному тексту, годовой абонемент в библиотеке стоит 0 долларов США.",
+  "usage": {
+    "input_tokens": 157,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 72,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 27,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 184
+  },
+  "incomplete_details": null
+}

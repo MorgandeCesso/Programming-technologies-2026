@@ -1,0 +1,26 @@
+{
+  "requested_model": "qwen2.5-1.5b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "придумай три разных названия приложения для планирования учебы. для каждого добавь пояснение не длиннее пяти слов. ответь на русском языке ровно тремя пронумерованными пунктами. не добавляй вступление и заключение.",
+  "temperature": 0.2,
+  "repeat": 2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 6.427,
+  "response_model": "qwen2.5-1.5b-instruct",
+  "status": "completed",
+  "answer": "1. \"Успех Prep\" - система для планирования учебных занятий, помогающая студентам достигать целей.\n\n2. \"Academic Tracker\" - программа для управления учебными планами и графиком выполнения заданий.\n\n3. \"Study Schedule Pro\" - приложение для создания и отслеживания учебного графика с учетом различных курсов и предметов.",
+  "usage": {
+    "input_tokens": 126,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 125,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 87,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 213
+  },
+  "incomplete_details": null
+}

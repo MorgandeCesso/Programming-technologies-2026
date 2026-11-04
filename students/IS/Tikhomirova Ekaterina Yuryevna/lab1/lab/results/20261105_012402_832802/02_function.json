@@ -1,0 +1,26 @@
+{
+  "task_id": "02_function",
+  "requested_model": "llama-3.2-1b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "напиши функцию sum_even(numbers) на Python, которая возвращает сумму четных целых чисел из списка. для пустого списка верни 0. ответ должен содержать только код функции без Markdown.",
+  "temperature": 0.2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 2.667,
+  "response_model": "llama-3.2-1b-instruct",
+  "status": "completed",
+  "answer": "```\ndef sum_even(numbers):\n    if not numbers:\n        return 0\n    else:\n        return sum(num for num in numbers if num % 2 == 0)\n```",
+  "usage": {
+    "input_tokens": 124,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 72,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 38,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 162
+  },
+  "incomplete_details": null
+}
