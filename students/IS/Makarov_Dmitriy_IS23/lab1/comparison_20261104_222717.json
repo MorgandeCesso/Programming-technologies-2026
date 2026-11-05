@@ -1,0 +1,102 @@
+[
+  {
+    "test_id": 1,
+    "test_name": "Объяснение понятия",
+    "model": "qwen3.5-4b",
+    "temperature": 0.2,
+    "time_seconds": 12.4,
+    "answer": "Рекурсия — это когда функция вызывает саму себя для решения задачи. Главное условие — наличие **базового случая** (условия остановки), чтобы избежать бесконечного цикла.\n\nПример: вычисление факториала числа.\n\n```python\ndef factorial(n):\n    # Базовый случай: если n равно 1, возвращаем 1\n    if n == 1:\n        return 1\n    \n    # Рекурсивный шаг: умножаем на предыдущее значение\n    return n * factorial(n - 1)\n\nprint(factorial(5))  # Вывод: 120\n```\n\n**Как это работает:**\n1. Функция вызывает себя с уменьшающимся аргументом (`n-1`).\n2. Когда `n` становится равным 1, вызов прекращается и начинается обратный ход возврата значений.",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 2,
+    "test_name": "Написание функции",
+    "model": "qwen3.5-4b",
+    "temperature": 0.2,
+    "time_seconds": 8.84,
+    "answer": "Вот функция `is_prime(n)` на Python:\n\n```python\ndef is_prime(n):\n    # Числа меньше 2 не являются простыми\n    if n <= 1:\n        return False\n    \n    # Проверяем делители от 2 до квадратного корня из n\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n            \n    return True\n```\n\n**Краткое объяснение:**\n1. Если число меньше или равно 1, функция сразу возвращает `False`.\n2. Цикл перебирает числа от 2 до квадратного корня из `n`. Если находит делитель (остаток равен 0), значит число составное и возвращается `False`.\n3. Если цикл завершается без нахождения делителя, число простое и возвращается `True`.",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 3,
+    "test_name": "Поиск ошибки",
+    "model": "qwen3.5-4b",
+    "temperature": 0.2,
+    "time_seconds": 13.4,
+    "answer": "**Ошибка:** `ZeroDivisionError` (деление на ноль).\n\n**Объяснение:**\nПри вызове функции с пустым списком `[]`, длина списка (`len(numbers)`) равна 0. Деление суммы элементов на длину пустого списка приводит к вычислению `0 / 0`, что вызывает исключение деления на ноль в Python.\n\n**Исправленный код:**\n```python\ndef average(numbers):\n    if not numbers:\n        return None # или raise ValueError(\"Список не может быть пустым\")\n    return sum(numbers) / len(numbers)\n\nprint(average([]))\n```",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 4,
+    "test_name": "Извлечение информации в JSON",
+    "model": "qwen3.5-4b",
+    "temperature": 0.2,
+    "time_seconds": 10.22,
+    "answer": "{\"name\": \"Анна Иванова\", \"age\": 25, \"city\": \"Казань\", \"company\": \"ТехноСофт\", \"position\": \"Python-разработчик\"}",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 5,
+    "test_name": "Недостаточно информации",
+    "model": "qwen3.5-4b",
+    "temperature": 0.2,
+    "time_seconds": 5.98,
+    "answer": "В предоставленном тексте нет информации о том, кто является генеральным директором компании.",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 1,
+    "test_name": "Объяснение понятия",
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "time_seconds": 3.52,
+    "answer": "**Рекурсия** — это способ вызова функции самой себя. Она используется для решения задач, которые можно разбить на более мелкие подзадачи похожего типа.\n\nПример:\n```python\ndef factorial(n):\n    if n == 1:\n        return 1\n    else:\n        return n * factorial(n - 1)\n```\nЭта функция вычисляет факториал числа `n` с помощью рекурсии.",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 2,
+    "test_name": "Написание функции",
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "time_seconds": 3.18,
+    "answer": "```python\ndef is_prime(n):\n    if n <= 1:\n        return False\n    if n == 2:\n        return True\n    if n % 2 == 0:\n        return False\n    for i in range(3, int(n**0.5) + 1, 2):\n        if n % i == 0:\n            return False\n    return True\n```\n\n### Объяснение:\n- Функция `is_prime(n)` проверяет, является ли число `n` простым.\n- Если `n` меньше или равно 1 — не простое (возвращается `False`).\n- Если `n` равно 2 — это самое маленькое простое число (возвращается `True`).\n- Если `n` чётное и больше 2 — не простое (возвращается `False`).\n- Для нечётных чисел проверяется делимость на все числа от 3 до квадратного корня из `n`, шагом 2 (чтобы пропускать чётные числа).",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 3,
+    "test_name": "Поиск ошибки",
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "time_seconds": 3.38,
+    "answer": "**Ошибка:**  \nВ коде вызывается функция `average` с пустым списком `[]`, что приводит к ошибке деления на ноль (`ZeroDivisionError`). Функция `len(numbers)` возвращает `0`, и попытка разделить сумму (равную `0`) на `0` вызывает исключение.\n\n**Причина:**  \nФункция не проверяет, является ли список пустым перед выполнением деления. Это приводит к ошибке при вызове с пустым списком.\n\n**Исправленный код:**\n\n```python\ndef average(numbers):\n    if not numbers:\n        return 0  # или raise ValueError(\"Список не может быть пустым\")\n    return sum(numbers) / len(numbers)\n\nprint(average([]))\n```\n\n**Объяснение:**  \nВ исправленной версии добавлена проверка: если список `numbers` пуст, функция возвращает `0` (или можно выбросить исключение, если это более корректно по контексту). Это предотвращает ошибку деления на ноль.",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 4,
+    "test_name": "Извлечение информации в JSON",
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "time_seconds": 0.75,
+    "answer": "{\"name\": \"Анна Иванова\", \"age\": 25, \"city\": \"Казани\", \"company\": \"ТехноСофт\", \"position\": \"Python-разработчик\"}",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "test_id": 5,
+    "test_name": "Недостаточно информации",
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "time_seconds": 0.23,
+    "answer": "Информации недостаточно.",
+    "finish_reason": "stop",
+    "error": null
+  }
+]
