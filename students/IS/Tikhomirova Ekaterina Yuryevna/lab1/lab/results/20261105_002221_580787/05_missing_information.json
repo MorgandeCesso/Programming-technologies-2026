@@ -1,0 +1,26 @@
+{
+  "task_id": "05_missing_information",
+  "requested_model": "qwen2.5-1.5b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "ответь только по предоставленному тексту. если информации недостаточно, сообщи об этом.\n\nтекст: библиотека работает с понедельника по пятницу с 09:00 до 18:00. по субботам и воскресеньям она закрыта.\n\nвопрос: сколько стоит годовой абонемент в библиотеку?",
+  "temperature": 0.2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 3.105,
+  "response_model": "qwen2.5-1.5b-instruct",
+  "status": "completed",
+  "answer": "В предоставленном тексте нет информации о стоимости годанкого абонемента в библиотеке.",
+  "usage": {
+    "input_tokens": 149,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 52,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 25,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 174
+  },
+  "incomplete_details": null
+}

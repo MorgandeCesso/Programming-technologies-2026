@@ -1,0 +1,26 @@
+{
+  "task_id": "02_function",
+  "requested_model": "qwen2.5-1.5b-instruct",
+  "system_prompt": "отвечай на русском языке. следуй требованиям запроса. при работе с предоставленным текстом используй только его сведения. если информации недостаточно, сообщи об этом.",
+  "prompt": "напиши функцию sum_even(numbers) на Python, которая возвращает сумму четных целых чисел из списка. для пустого списка верни 0. ответ должен содержать только код функции без Markdown.",
+  "temperature": 0.2,
+  "max_output_tokens": 512,
+  "elapsed_seconds": 4.441,
+  "response_model": "qwen2.5-1.5b-instruct",
+  "status": "completed",
+  "answer": "```python\ndef sum_even(numbers):\n    if not numbers:\n        return 0\n    \n    total = 0\n    for num in numbers:\n        if num % 2 == 0:\n            total += num\n            \n    return total\n```",
+  "usage": {
+    "input_tokens": 104,
+    "input_tokens_details": {
+      "cache_write_tokens": null,
+      "cached_tokens": 52,
+      "cache_write_tokens_details": null
+    },
+    "output_tokens": 50,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 154
+  },
+  "incomplete_details": null
+}
