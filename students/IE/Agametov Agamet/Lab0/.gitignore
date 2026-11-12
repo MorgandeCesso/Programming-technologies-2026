@@ -1,0 +1,4 @@
+.env
+venv/
+prompts.db
+__pycache__/
