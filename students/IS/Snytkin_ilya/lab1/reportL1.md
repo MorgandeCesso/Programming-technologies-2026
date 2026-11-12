@@ -9,9 +9,9 @@
 Компьютер работает под Windows 11. Процессор AMD Ryzen 7 5700U имеет 8 ядер и 16 потоков. Установлено 16 ГБ ОЗУ, системе доступно около 15,3 ГиБ. Используется встроенная Radeon Graphics. Перед подготовкой на диске C было около 90 ГиБ свободного места. Установлена LM Studio 0.4.28.
 
 | Модель          | Параметров | Формат и квантование | Размер файла |
-| --------------------- | -------------------: | ---------------------- | ----------------------: |
-| Qwen2.5-1.5B-Instruct |        1,54 млрд | GGUF, `Q4_K_M`       |               1,12 ГБ |
-| Qwen2.5-3B-Instruct   |        3,09 млрд | GGUF, `Q4_K_M`       |               2,10 ГБ |
+| --------------------- | -------------------: | -------------------------------------- | ----------------------: |
+| Qwen2.5-1.5B-Instruct |        1,54 млрд | GGUF, `Q4_K_M`                       |               1,12 ГБ |
+| Qwen2.5-3B-Instruct   |        3,09 млрд | GGUF, `Q4_K_M`                       |               2,10 ГБ |
 
 Выбраны две модели одной серии. При одинаковом квантовании можно проверить, как размер модели влияет на скорость и ответы на этих заданиях. Число параметров в таблице взято из карточек оригинальных моделей. [Карточка 1.5B](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct), [GGUF 1.5B](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/blob/main/qwen2.5-1.5b-instruct-q4_k_m.gguf), [карточка 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct), [GGUF 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/blob/main/qwen2.5-3b-instruct-q4_k_m.gguf).
 
@@ -33,7 +33,7 @@
 
 После замеров включена **Require Authentication**. Запрос `GET /v1/models` без токена получил HTTP 401, а с токеном — HTTP 200 и список моделей. Запрос с токеном к `POST /v1/responses` также получил HTTP 200. Модель Qwen2.5-3B-Instruct ответила `4` на вопрос «Сколько будет 2 + 2?».
 
-1. Установить **LM Studio для Windows x64** и открыть приложение. Если вкладка **Developer** скрыта, включить режим разработчика в **Settings → Developer**. [Скачать LM Studio](https://lmstudio.ai/download?os=windows), [режим разработчика](https://lmstudio.ai/docs/app/user-interface/modes).
+1. Установить **LM Studio для Windows x64** и открыть приложение. Если вкладка **Developer** скрыта, включить режим разработчика в **Settings → Developer**. 
 2. В **My Models → Models Directory** указать папку `C:\Users\админ\Programming-technologies-2026\students\IS\Snytkin_ilya\lab1\models`. Файлы должны лежать в подпапках `Qwen\Qwen2.5-1.5B-Instruct-GGUF` и `Qwen\Qwen2.5-3B-Instruct-GGUF`. Если на другом компьютере папки пусты, можно скачать нужные варианты через **Discover** по именам репозиториев из ссылок выше. [Структура папок для моделей](https://lmstudio.ai/docs/app/advanced/import-model).
 3. В **Developer → Server Settings** выставить порт `1234` и включить **Require Authentication**. В **Manage Tokens → Create Token** создать токен для чтения списка моделей и генерации ответов. Скопировать его в `.env` после `LM_STUDIO_API_TOKEN=`, затем запустить локальный сервер кнопкой **Start Server**. Если `.env` отсутствует, сначала скопировать `.env.example` под этим именем. Токен сохраняется в файле, исключённом из Git. [Аутентификация LM Studio](https://lmstudio.ai/docs/developer/core/authentication).
 4. Загрузить модели по очереди с одинаковыми настройками. Команды ниже задают идентификаторы `lab1-qwen-1.5b` и `lab1-qwen-3b` и выгружают первую модель перед загрузкой второй. [Загрузка модели и параметры](https://lmstudio.ai/docs/cli/local-models/load).
