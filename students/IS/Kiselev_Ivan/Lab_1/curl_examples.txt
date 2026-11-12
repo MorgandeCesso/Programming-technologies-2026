@@ -1,0 +1,183 @@
+Gemma 4 12B QAT, temperature 0.2, прогон 1
+
+curl.exe -s http://127.0.0.1:1234/v1/responses ^
+  -H "Authorization: Bearer $API_KEY" ^
+  -H "Content-Type: application/json" ^
+  --data-binary @request.json
+
+request.json:
+{"input":"Объясни простыми словами, что такое хеш-таблица и чем она отличается от списка. Кратко, на русском.","model":"google/gemma-4-12b-qat","temperature":0.2}
+
+HTTP 200, время 128.7 с
+
+ответ:
+{
+  "id": "resp_92a88206a8931f34862bf043d6e3a9d60e6f3424227c23f4",
+  "object": "response",
+  "created_at": 1794134704,
+  "completed_at": 1794134833,
+  "status": "completed",
+  "incomplete_details": null,
+  "model": "google/gemma-4-12b-qat",
+  "previous_response_id": null,
+  "instructions": null,
+  "output": [
+    {
+      "id": "rs_kbrr6pjqu9a073zyzjgbbp7",
+      "type": "reasoning",
+      "status": "completed",
+      "summary": [],
+      "content": [
+        {
+          "type": "reasoning_text",
+          "text": "*   Topic: Hash table (хеш-таблица) vs. List (список).\n*   Constraint 1: Simple words (простыми словами).\n*   Constraint 2: Brief (кратко).\n*   Language: Russian (на русском).\n\n    *   *List:* A sequence of items. Like a line of people or a grocery list. To find something, you usually start from the beginning and look one by one.\n    *   *Hash Table:* A collection of key-value pairs. Like a dictionary or a locker room with numbered keys. You have a \"key\" (e.g., a name), and it tells you exactly where the \"value\" (e.g., a phone number) is stored.\n\n    *   *List:*\n        *   Structure: Order matters.\n        *   Search: $O(n)$ - slow if the list is long.\n        *   Analogy: A shelf of books where you have to check each one.\n\n    *   *Hash Table:*\n        *   Structure: Key $\\rightarrow$ Value.\n        *   Search: $O(1)$ (average) - very fast regardless of size.\n        *   Mechanism: A \"hash function\" turns the key into an index (a number).\n        *   Analogy: A library index or a locker system.\n\n    *   *Introduction:* Define both briefly.\n    *   *The Difference (The \"Core\"):* Speed of finding things.\n    *   *Analogy:* Use a real-world example (Library/Locker).\n    *   *Summary Table:* For quick comparison.\n\n    *   *List:* \"Список — это просто последовательность элементов.\" (List is just a sequence of elements.)\n    *   *Hash Table:* \"Хеш-таблица — это структура, где данные хранятся парами «Ключ — Значение».\" (Hash table is a structure where data is stored in Key-Value pairs.)\n    *   *The \"How it works\" part:* Explain the hash function simply. \"Хеш-функция превращает ключ в номер ячейки.\" (Hash function turns the key into a cell number.)\n    *   *Comparison:*\n        *   List: Search by scanning.\n        *   Hash Table: Search by direct access.\n\n    *   *Simple words?* Yes.\n    *   *Brief?* Yes.\n    *   *Russian?* Yes."
+        }
+      ]
+    },
+    {
+      "id": "msg_tuijaxbghmj0gay5epzor",
+      "type": "message",
+      "role": "assistant",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "Вот простое объяснение:\n\n### Что это такое?\n\n1.  **Список (List)** — это просто последовательность элементов один за другим. Как очередь в магазине или список покупок. Чтобы найти что-то в середине или в конце, тебе нужно пройтись по всем предыдущим пунктам.\n2.  **Хеш-таблица (Hash Table)** — это структура, где данные хранятся парами: **«Ключ — Значение»**. Это как словарь: у тебя есть слово (ключ), и ты сразу находишь его определение (значение).\n\n### В чем главная разница?\n\nГлавное отличие — в **скорости поиска**.\n\n*   **В списке** поиск работает по принципу «перебора». Если в списке миллион элементов и нужный тебе — последний, компьютеру придется проверить все 999 999 предыдущих.\n*   **В хеш-таблице** поиск работает почти мгновенно. У хеш-таблицы есть специальная формула (хеш-функция). Ты даешь ей «Ключ», она тут же превращает его в номер ячейки, и компьютер сразу прыгает в нужное место. Ему не нужно ничего перебирать.\n\n### Простая аналогия\n\nПредставь, что тебе нужно найти книгу в библиотеке:\n\n*   **Список:** Книги стоят в случайном порядке на одной длинной полке. Чтобы найти нужную, тебе нужно заглянуть под каждую обложку, начиная с первой.\n*   **Хеш-таблица:** У каждой книги есть свой номер шкафа (который вычисляется по названию). Ты посмотрел на название, узнал номер шкафа и сразу подошел к нему.\n\n### Итог (кратко):\n*   **Список:** Медленно ищет (нужно перебирать), но удобно хранить вещи в порядке.\n*   **Хеш-таблица:** Очень быстро ищет (сразу прыгает к цели), но порядок элементов в ней не важен.",
+          "annotations": [],
+          "logprobs": []
+        }
+      ]
+    }
+  ],
+  "error": null,
+  "tools": [],
+  "tool_choice": "auto",
+  "truncation": "auto",
+  "parallel_tool_calls": true,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "top_p": 0.95,
+  "presence_penalty": 0,
+  "frequency_penalty": 1,
+  "top_logprobs": 0,
+  "temperature": 0.2,
+  "reasoning": {
+    "summary": null,
+    "effort": null
+  },
+  "usage": {
+    "input_tokens": 45,
+    "output_tokens": 971,
+    "total_tokens": 1016,
+    "input_tokens_details": {
+      "cached_tokens": 7
+    },
+    "output_tokens_details": {
+      "reasoning_tokens": 531
+    }
+  },
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "store": true,
+  "background": false,
+  "service_tier": "default",
+  "metadata": {},
+  "safety_identifier": null,
+  "prompt_cache_key": null
+}
+
+
+Nemotron 3.5 Bolt E4B, temperature 0.2, прогон 1
+
+curl.exe -s http://127.0.0.1:1234/v1/responses ^
+  -H "Authorization: Bearer $API_KEY" ^
+  -H "Content-Type: application/json" ^
+  --data-binary @request.json
+
+request.json:
+{"input":"Объясни простыми словами, что такое хеш-таблица и чем она отличается от списка. Кратко, на русском.","model":"nvidia-nemotron-3.5-bolt-e4b-4gb","temperature":0.2}
+
+HTTP 200, время 8.9 с
+
+ответ:
+{
+  "id": "resp_76f4a2b3d10166216993c5677d4d751537f4b7757a0b7a1e",
+  "object": "response",
+  "created_at": 1794135647,
+  "completed_at": 1794135656,
+  "status": "completed",
+  "incomplete_details": null,
+  "model": "nvidia-nemotron-3.5-bolt-e4b-4gb",
+  "previous_response_id": null,
+  "instructions": null,
+  "output": [
+    {
+      "id": "rs_1xn1uvpilxglarws8ngnq",
+      "type": "reasoning",
+      "status": "completed",
+      "summary": [],
+      "content": [
+        {
+          "type": "reasoning_text",
+          "text": "Here's a plan to answer the request:\n1.  Define what a hash table is (simple terms).\n2.  Explain how it works (key -> hash function -> index).\n3.  Contrast it with a list (sequential access vs. direct access).\n4.  Keep it brief and in Russian.\n\n(Self-Correction/Refinement: Ensure the explanation focuses on *speed*—that's the main advantage.)"
+        }
+      ]
+    },
+    {
+      "id": "msg_jmxskd6f3u5n6j8jups2g",
+      "type": "message",
+      "role": "assistant",
+      "status": "completed",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "**Список:** Это как очередь или ряд. Чтобы найти элемент, нужно начать с начала и проверять каждый элемент по порядку (например, 1-й, 2-й, 3-й...). Если список длинный, поиск занимает много времени.\n\n**Хеш-таблица:** Это умная \"система хранения\" с быстрым доступом. Вместо того чтобы искать по порядку, она использует специальную формулу (хеш-функцию), которая превращает ваш элемент (например, имя) в **конкретный номер** (индекс).\n\n**Чем отличается?**\n* **Список:** Поиск медленный (нужно перебирать).\n* **Хеш-таблица:** Поиск очень быстрый (почти мгновенный), потому что она сразу знает, где лежит нужный элемент, без необходимости перебора.\n\n**Простыми словами:** Список — это поиск \"вручную\", хеш-таблица — это поиск по \"адресу\".",
+          "annotations": [],
+          "logprobs": []
+        }
+      ]
+    }
+  ],
+  "error": null,
+  "tools": [],
+  "tool_choice": "auto",
+  "truncation": "auto",
+  "parallel_tool_calls": true,
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "top_p": 0.95,
+  "presence_penalty": 0,
+  "frequency_penalty": 1.1,
+  "top_logprobs": 0,
+  "temperature": 0.2,
+  "reasoning": {
+    "summary": null,
+    "effort": null
+  },
+  "usage": {
+    "input_tokens": 45,
+    "output_tokens": 302,
+    "total_tokens": 347,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens_details": {
+      "reasoning_tokens": 93
+    }
+  },
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "store": true,
+  "background": false,
+  "service_tier": "default",
+  "metadata": {},
+  "safety_identifier": null,
+  "prompt_cache_key": null
+}
+
