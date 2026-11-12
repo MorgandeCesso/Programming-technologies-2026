@@ -1,0 +1,16 @@
+# PostgreSQL для ЛР2. Запуск: docker compose up -d
+services:
+  db:
+    image: postgres:16
+    container_name: lab2-postgres
+    environment:
+      POSTGRES_USER: lab2
+      POSTGRES_PASSWORD: lab2
+      POSTGRES_DB: registrations
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data   # данные сохраняются между перезапусками
+
+volumes:
+  pgdata:
