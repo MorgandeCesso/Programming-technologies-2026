@@ -1,0 +1,24 @@
+# Модель запускается отдельно и с хоста доступна как localhost:7000.
+# Из контейнера api тот же сервер доступен как host.docker.internal:7000.
+#
+# При старте контейнера entrypoint.sh заново индексирует документы в Qdrant
+# и удаляет docs/temp. Кэш весов bge-m3 лежит в томе hf_cache.
+#
+# Запуск: docker compose up --build
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      BASE_URL: http://host.docker.internal:7000/v1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - hf_cache:/root/.cache/huggingface
+
+volumes:
+  hf_cache:
