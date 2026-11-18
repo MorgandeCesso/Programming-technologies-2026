@@ -1,10 +1,7 @@
-
 from openai import AsyncOpenAI
-
 from ai.prompt import SYSTEM_PROMPT
 from api.schemas import Extraction
 from config import MODEL, BASE_URL, API_KEY, LLM_TIMEOUT
-
 
 client = AsyncOpenAI(
     base_url=BASE_URL,
@@ -12,7 +9,6 @@ client = AsyncOpenAI(
     timeout=LLM_TIMEOUT,
     max_retries=0,
 )
-
 
 async def llm_response(message: str) -> str:
     response = await client.responses.create(
