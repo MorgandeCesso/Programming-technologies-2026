@@ -12,8 +12,7 @@ client = OpenAI(
 
 MODEL = "microsoft_phi-4-mini-instruct"
 
-prompt = ("Извлеки данные из текста и верни ответ в формате JSON (name, age, group, email).\n"
-          "Текст: Иван Петров, 21 год, группа ИС-23, почта ivan.petrov@example.com.")
+prompt = ("Придумай 3 названия для IT-компании ")
 
 for temperature in [0.2, 1.0]:
     for i in range(3):
