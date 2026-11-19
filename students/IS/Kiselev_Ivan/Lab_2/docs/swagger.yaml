@@ -1,0 +1,139 @@
+basePath: /
+definitions:
+  internal.CreateRequest:
+    properties:
+      message:
+        example: Сегодня около 10 утра нашёл чёрный зонт у стойки охраны, локация
+          LOC-03. На ручке красная лента.
+        type: string
+    required:
+    - message
+    type: object
+  internal.ErrorResponse:
+    properties:
+      error:
+        example: bad_request
+        type: string
+      message:
+        example: Поле message обязательно и не может состоять из пробелов
+        type: string
+    type: object
+  internal.RecordResponse:
+    properties:
+      category:
+        enum:
+        - lost
+        - found
+        - claim
+        - other
+        type: string
+      created_at:
+        type: string
+      details:
+        type: string
+      event_time:
+        type: string
+      id:
+        type: integer
+      item_description:
+        type: string
+      location_code:
+        type: string
+      location_id:
+        type: integer
+      match_status:
+        enum:
+        - matched
+        - not_found
+        - not_provided
+        type: string
+      message:
+        type: string
+      summary:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: 'Сообщения о находках и потерях: извлечение полей локальной моделью
+    и сохранение в PostgreSQL.'
+  title: Бюро находок
+  version: "1.0"
+paths:
+  /lost-found:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/internal.RecordResponse'
+            type: array
+      summary: Список сообщений
+      tags:
+      - lost-found
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Текст сообщения
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/internal.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/internal.RecordResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal.ErrorResponse'
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/internal.ErrorResponse'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/internal.ErrorResponse'
+        "504":
+          description: Gateway Timeout
+          schema:
+            $ref: '#/definitions/internal.ErrorResponse'
+      summary: Принять сообщение
+      tags:
+      - lost-found
+  /lost-found/{id}:
+    get:
+      parameters:
+      - description: ID записи
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/internal.RecordResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/internal.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal.ErrorResponse'
+      summary: Одна запись
+      tags:
+      - lost-found
+swagger: "2.0"
