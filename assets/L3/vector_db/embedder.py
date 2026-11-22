@@ -6,7 +6,7 @@ if __name__ == "__main__" and __package__ is None:
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, PointStruct, VectorParams
-
+from sentence_transformers import SentenceTransformer
 from vector_db.chunker import TEMP_DIR, TOKENIZER_NAME, Chunk, build_temp_chunks
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -106,7 +106,6 @@ def search(query: str, limit: int = 3) -> list[dict]:
 def _get_model():
     global _model
     if _model is None:
-        from sentence_transformers import SentenceTransformer
 
         _model = SentenceTransformer(TOKENIZER_NAME)
     return _model

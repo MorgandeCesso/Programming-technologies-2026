@@ -1,6 +1,7 @@
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+from transformers import AutoTokenizer
 
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -94,7 +95,6 @@ def _split_text(text: str, size: int, overlap: int) -> list[str]:
 def _get_tokenizer():
     global _tokenizer
     if _tokenizer is None:
-        from transformers import AutoTokenizer
 
         _tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_NAME)
     return _tokenizer
