@@ -1,0 +1,10 @@
+openai
+python-dotenv
+fastapi
+uvicorn
+pydantic
+python-docx
+qdrant-client
+transformers
+sentence-transformers
+torch
