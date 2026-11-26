@@ -1,0 +1,56 @@
+[
+  {
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "attempt": 1,
+    "time_seconds": 2.93,
+    "answer": "1. Цифровая Фабрика  \n2. НейроЛинк  \n3. ТехноГоризонт  \n4. КодМир  \n5. ИнноваТек",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "attempt": 2,
+    "time_seconds": 0.65,
+    "answer": "1. ЦифроМир  \n2. ТехноСфера  \n3. ИнноваТек  \n4. БитЛабс  \n5. ЭкспертСистем",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "model": "qwen/qwen3-8b",
+    "temperature": 0.2,
+    "attempt": 3,
+    "time_seconds": 0.7,
+    "answer": "1. Цифровая Фабрика  \n2. Инновационный Хаб  \n3. ТехноГенезис  \n4. БитЛаб  \n5. Синтаксис Плюс",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "model": "qwen/qwen3-8b",
+    "temperature": 1.0,
+    "attempt": 1,
+    "time_seconds": 0.66,
+    "answer": "1. ЦифроСтрой  \n2. ТехноСфера  \n3. ИнноваПроект  \n4. БитЛабс  \n5. СилаФорте",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "model": "qwen/qwen3-8b",
+    "temperature": 1.0,
+    "attempt": 2,
+    "time_seconds": 0.61,
+    "answer": "1. Цифровой Хаус  \n2. НейроЛаб  \n3. ИнновоТек  \n4. КодМир  \n5. ТехноПульс",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "model": "qwen/qwen3-8b",
+    "temperature": 1.0,
+    "attempt": 3,
+    "time_seconds": 0.69,
+    "answer": "1. НейроТех  \n2. Цифровые Гранты  \n3. ИнноваЛаб  \n4. КодМаркет  \n5. ТехноГенезис",
+    "finish_reason": "stop",
+    "error": null
+  }
+]
